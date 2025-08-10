@@ -1,8 +1,42 @@
-import { View, Text,useWindowDimensions } from "react-native";
-import {styles} from '../../ui/styleSheet'
+import {
+  View,
+  Text,
+  useWindowDimensions,
+  TouchableOpacity,
+} from "react-native";
+import { styles } from "../../ui/styleSheet";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useEffect, useState } from "react";
+import Modal from "react-native-modal";
 
 export const Header: React.FC<any> = () => {
-  return <View style={styles.header}>
-    <Text style={styles.headerTitle}>To Do List</Text>
-  </View>;
+  const [isAddClicked, setIsAddClicked] = useState<boolean>(false);
+  useEffect(() => {
+    console.log(isAddClicked);
+  }, [isAddClicked]);
+  return (
+    <>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>To Do List</Text>
+        <TouchableOpacity
+          style={styles.headerIconContainer}
+          onPress={() => setIsAddClicked(!isAddClicked)}
+        >
+          <Ionicons
+            name="add-circle-outline"
+            size={styles.headerAddIcon.fontSize}
+            color={styles.headerAddIcon.color}
+          />
+        </TouchableOpacity>
+      </View>
+      <Modal
+        isVisible={isAddClicked}
+        onSwipeComplete={() => setIsAddClicked(!isAddClicked)}
+        onBackdropPress={() => setIsAddClicked(!isAddClicked)}
+        useNativeDriverForBackdrop = {true}
+      >
+        <View style={{ flex: 1 }}></View>
+      </Modal>
+    </>
+  );
 };

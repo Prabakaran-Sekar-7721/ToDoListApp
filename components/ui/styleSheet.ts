@@ -11,13 +11,28 @@ export const styles = StyleSheet.create({
   // Header Styles
   header: {
     backgroundColor: colors.headerColor,
-    paddingVertical: 16,
+    alignItems: "center",
+    // paddingVertical: 16,
     paddingHorizontal: 20,
+    flexDirection: "row",
+    flex: 1,
+    maxHeight: 50,
+  },
+  headerIconContainer: {
+    flex: 0.1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   headerTitle: {
+    flex: 0.9,
     fontSize: 20,
     fontWeight: "bold",
     color: colors.textLight,
+  },
+  // Header add icon style
+  headerAddIcon: {
+    color: colors.textLight,
+    fontSize: 30,
   },
 
   // Text Styles
