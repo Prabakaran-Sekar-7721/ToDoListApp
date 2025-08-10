@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, StatusBar, Platform, View, Text } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Header } from "./Header/Header";
-import { Main } from "./Main/Main";
+import { Main } from "./Main/ui/Main";
 
 const AppContent = () => {
   const insets = useSafeAreaInsets();

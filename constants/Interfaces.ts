@@ -1,5 +1,7 @@
 export interface FlatListComponentProps {
+  id: number;
   title: string;
   dateTimeStamp: string;
-  status:boolean
+  status:boolean;
+  description: string;
 }

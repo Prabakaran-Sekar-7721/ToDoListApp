@@ -6,9 +6,11 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Checkbox } from 'react-native-paper';
 
 export const FlatListComponent: React.FC<FlatListComponentProps> = ({
+  id,
   title,
   dateTimeStamp,
-  status
+  status,
+  description,
 }) => {
   const [currentStatus,setCurrentStatus] = useState<boolean>(status);
   return (
@@ -20,7 +22,7 @@ export const FlatListComponent: React.FC<FlatListComponentProps> = ({
         </Text>
       </View>
       <View style={styles.checkboxContainer}>
-        <Checkbox.Android status={currentStatus?"checked":"unchecked"} onPress={()=>{setCurrentStatus(!currentStatus)}}/>
+        <Checkbox.Android status={currentStatus?"checked":"unchecked"} onPress={()=>{setCurrentStatus(!currentStatus);}}/>
       </View>
     </TouchableOpacity>
   );

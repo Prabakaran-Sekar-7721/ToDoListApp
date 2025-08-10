@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		200D89D2D0E722D95601822C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C51FA16159D6955F561A598C /* PrivacyInfo.xcprivacy */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		5D4090A73496401B220D993B /* libPods-ToDoListApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C61A7A9DE14A9EB4671DDA6 /* libPods-ToDoListApp.a */; };
+		73D8F847BD9FFEC5E00851ED /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA75CAB267A89763C0A27B /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C34D17970E29452F18F58F79 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6393C1F9B88CEA2381CC6855 /* PrivacyInfo.xcprivacy */; };
-		D0DD98AC5CAF9FC94E314C0A /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF29D517A52E4ADF22524B3 /* ExpoModulesProvider.swift */; };
+		E598874CD6D97146F3B24605 /* libPods-ToDoListApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1F421CF1469F40B62C9DDF /* libPods-ToDoListApp.a */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		016A551F9F9206CE001FF6B9 /* Pods-ToDoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListApp.debug.xcconfig"; path = "Target Support Files/Pods-ToDoListApp/Pods-ToDoListApp.debug.xcconfig"; sourceTree = "<group>"; };
+		09CA75CAB267A89763C0A27B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ToDoListApp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ToDoListApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ToDoListApp/Info.plist; sourceTree = "<group>"; };
-		1C61A7A9DE14A9EB4671DDA6 /* libPods-ToDoListApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToDoListApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		548B61ED779EE15082BC8B24 /* Pods-ToDoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListApp.release.xcconfig"; path = "Target Support Files/Pods-ToDoListApp/Pods-ToDoListApp.release.xcconfig"; sourceTree = "<group>"; };
-		6393C1F9B88CEA2381CC6855 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ToDoListApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		6FF29D517A52E4ADF22524B3 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ToDoListApp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		3D1F421CF1469F40B62C9DDF /* libPods-ToDoListApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToDoListApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ToDoListApp/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		D94C7F00F2ED3D0238E3680E /* Pods-ToDoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListApp.debug.xcconfig"; path = "Target Support Files/Pods-ToDoListApp/Pods-ToDoListApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C51FA16159D6955F561A598C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ToDoListApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		EA4C73ED3D7D7774EB589A07 /* Pods-ToDoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoListApp.release.xcconfig"; path = "Target Support Files/Pods-ToDoListApp/Pods-ToDoListApp.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ToDoListApp/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* ToDoListApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ToDoListApp-Bridging-Header.h"; path = "ToDoListApp/ToDoListApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,21 +37,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D4090A73496401B220D993B /* libPods-ToDoListApp.a in Frameworks */,
+				E598874CD6D97146F3B24605 /* libPods-ToDoListApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D19DFF3C2D6200D55185A05 /* ToDoListApp */ = {
-			isa = PBXGroup;
-			children = (
-				6FF29D517A52E4ADF22524B3 /* ExpoModulesProvider.swift */,
-			);
-			name = ToDoListApp;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				6393C1F9B88CEA2381CC6855 /* PrivacyInfo.xcprivacy */,
+				C51FA16159D6955F561A598C /* PrivacyInfo.xcprivacy */,
 			);
 			name = ToDoListApp;
 			sourceTree = "<group>";
@@ -70,27 +62,17 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				1C61A7A9DE14A9EB4671DDA6 /* libPods-ToDoListApp.a */,
+				3D1F421CF1469F40B62C9DDF /* libPods-ToDoListApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6044D72ED4E99A36000C71D4 /* ExpoModulesProviders */ = {
+		609B92FC7ACC50B9F59E1E98 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				0D19DFF3C2D6200D55185A05 /* ToDoListApp */,
+				8F3A5E075E278C1209F4E5F0 /* ToDoListApp */,
 			);
 			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		74D1F1BD0C153D1D7C7DFFAD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D94C7F00F2ED3D0238E3680E /* Pods-ToDoListApp.debug.xcconfig */,
-				548B61ED779EE15082BC8B24 /* Pods-ToDoListApp.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -107,8 +89,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				74D1F1BD0C153D1D7C7DFFAD /* Pods */,
-				6044D72ED4E99A36000C71D4 /* ExpoModulesProviders */,
+				DA72C39C06A9D33F95158229 /* Pods */,
+				609B92FC7ACC50B9F59E1E98 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -123,6 +105,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8F3A5E075E278C1209F4E5F0 /* ToDoListApp */ = {
+			isa = PBXGroup;
+			children = (
+				09CA75CAB267A89763C0A27B /* ExpoModulesProvider.swift */,
+			);
+			name = ToDoListApp;
+			sourceTree = "<group>";
+		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +120,16 @@
 			);
 			name = Supporting;
 			path = ToDoListApp/Supporting;
+			sourceTree = "<group>";
+		};
+		DA72C39C06A9D33F95158229 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				016A551F9F9206CE001FF6B9 /* Pods-ToDoListApp.debug.xcconfig */,
+				EA4C73ED3D7D7774EB589A07 /* Pods-ToDoListApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ToDoListApp" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				B87D919D104347355A42B9B9 /* [Expo] Configure project */,
+				8248A0F1605FF1708DD5C600 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				CEA1B823033006F6042F3DE5 /* [CP] Embed Pods Frameworks */,
+				D4AB4D061E6359108D578791 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				C34D17970E29452F18F58F79 /* PrivacyInfo.xcprivacy in Resources */,
+				200D89D2D0E722D95601822C /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +276,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ToDoListApp/Pods-ToDoListApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B87D919D104347355A42B9B9 /* [Expo] Configure project */ = {
+		8248A0F1605FF1708DD5C600 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -295,7 +295,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-ToDoListApp/expo-configure-project.sh\"\n";
 		};
-		CEA1B823033006F6042F3DE5 /* [CP] Embed Pods Frameworks */ = {
+		D4AB4D061E6359108D578791 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -321,7 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				D0DD98AC5CAF9FC94E314C0A /* ExpoModulesProvider.swift in Sources */,
+				73D8F847BD9FFEC5E00851ED /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +330,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D94C7F00F2ED3D0238E3680E /* Pods-ToDoListApp.debug.xcconfig */;
+			baseConfigurationReference = 016A551F9F9206CE001FF6B9 /* Pods-ToDoListApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -366,7 +366,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 548B61ED779EE15082BC8B24 /* Pods-ToDoListApp.release.xcconfig */;
+			baseConfigurationReference = EA4C73ED3D7D7774EB589A07 /* Pods-ToDoListApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
