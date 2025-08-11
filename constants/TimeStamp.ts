@@ -6,18 +6,29 @@ export const getTimestamp = (): string => {
 // Format timestamp to readable date string
 export const formatTimestamp = (timestamp: string): string => {
   const date = new Date(timestamp);
-  
+
+  console.log(
+    "timestamp:",
+    timestamp,
+    " Date:",
+    date,
+    " date.getTime()",
+    date.getTime(),
+    " isNaN(date.getTime())",
+    isNaN(date.getTime())
+  );
+
   // Check if date is valid
   if (isNaN(date.getTime())) {
-    return 'Invalid date';
+    return "Invalid date";
   }
-  
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
+
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 };
 
@@ -25,49 +36,50 @@ export const formatTimestamp = (timestamp: string): string => {
 export const getRelativeTime = (timestamp: string): string => {
   const now: Date = new Date();
   const date: Date = new Date(timestamp);
-  
+
   // Check if date is valid
   if (isNaN(date.getTime())) {
-    return 'Invalid date';
+    return "Invalid date";
   }
-  
+
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-  
-  if (diffInSeconds < 0) return 'Future date';
-  if (diffInSeconds < 60) return 'Just now';
+
+  if (diffInSeconds < 0) return "Future date";
+  if (diffInSeconds < 60) return "Just now";
   if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
   if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
-  if (diffInSeconds < 2592000) return `${Math.floor(diffInSeconds / 86400)}d ago`;
+  if (diffInSeconds < 2592000)
+    return `${Math.floor(diffInSeconds / 86400)}d ago`;
   return formatTimestamp(timestamp);
 };
 
 // Additional utility: Get time only
 export const getTimeOnly = (timestamp: string): string => {
   const date = new Date(timestamp);
-  
+
   if (isNaN(date.getTime())) {
-    return 'Invalid time';
+    return "Invalid time";
   }
-  
-  return date.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true
+
+  return date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
   });
 };
 
 // Additional utility: Get date only
 export const getDateOnly = (timestamp: string): string => {
   const date = new Date(timestamp);
-  
+
   if (isNaN(date.getTime())) {
-    return 'Invalid date';
+    return "Invalid date";
   }
-  
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
+
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 };
 
@@ -75,7 +87,7 @@ export const getDateOnly = (timestamp: string): string => {
 export const isToday = (timestamp: string): boolean => {
   const date = new Date(timestamp);
   const today = new Date();
-  
+
   return date.toDateString() === today.toDateString();
 };
 
@@ -84,6 +96,6 @@ export const isThisWeek = (timestamp: string): boolean => {
   const date = new Date(timestamp);
   const now = new Date();
   const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  
+
   return date >= weekAgo && date <= now;
 };

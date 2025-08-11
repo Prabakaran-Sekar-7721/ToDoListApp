@@ -2,20 +2,23 @@ import { storage } from "@/components/storage/mmkv";
 import { FlatListComponentProps } from "@/constants/Interfaces";
 import { getTaskList } from "./getTaskList";
 
-export const postTaskList = async (task: FlatListComponentProps) => {
-  // Get current tasks from storage
-  const tasks: FlatListComponentProps[] = await getTaskList();
+export const postTaskList = async (
+  task: FlatListComponentProps,
+  setTask: (value: string) => void
+) => {
+  const tasks = await getTaskList();
+  // const finalTasks = [...tasks, task];
+  // Check if this task ID already exists
+  const exists = tasks.some((t) => t.id === task.id);
 
-  // Map over tasks, replacing the one with the same id, otherwise keep as is
-//   const updatedTasks = tasks.map(t =>
-//     t.id === task.id ? { ...t, ...task } : t
-//   );
+  let updatedTasks: FlatListComponentProps[];
 
-  // If task doesn't exist, append it
-  const finalTasks =  [...tasks, task];
-
-  // Save back to MMKV
-  console.log("Saving task to storage:", task);
-  storage.set('tasks', JSON.stringify(finalTasks));
+  if (exists) {
+    // Replace the existing task with the updated values
+    updatedTasks = tasks.map((t) => (t.id === task.id ? { ...t, ...task } : t));
+  } else {
+    // Append new task
+    updatedTasks = [...tasks, task];
+  }
+  setTask(JSON.stringify(updatedTasks));
 };
-

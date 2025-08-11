@@ -6,17 +6,30 @@ import { getTaskList } from "../data/getTaskList";
 import { useEffect, useState } from "react";
 import { postTaskList } from "../data/postTaskList";
 import { storage } from "@/components/storage/mmkv";
+import { useMMKVString } from "react-native-mmkv";
 
 export const Main: React.FC = () => {
+  const [tasks] = useMMKVString("tasks", storage);
   const [toDoList, setToDoList] = useState<FlatListComponentProps[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
-      const tasks = await getTaskList();
+      setToDoList(
+        tasks
+          ? JSON.parse(tasks).sort(
+              (a: FlatListComponentProps, b: FlatListComponentProps) => {
+                return (
+                  new Date(b.dateTimeStamp).getTime() -
+                  new Date(a.dateTimeStamp).getTime()
+                );
+              }
+            )
+          : []
+      );
       // storage.clearAll();
-      setToDoList(tasks);
     };
     fetchData();
-  }, []);
+  }, [tasks]);
   return (
     <View style={styles.container}>
       <FlatList
@@ -31,6 +44,7 @@ export const Main: React.FC = () => {
           />
         )}
         keyExtractor={(item, index) => index.toString()}
+        scrollEnabled={true}
       />
     </View>
   );

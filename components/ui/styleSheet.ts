@@ -101,4 +101,19 @@ export const styles = StyleSheet.create({
   todoUrgent: {
     backgroundColor: colors.errorColor,
   },
+  modalContainer: {
+    backgroundColor: colors.backgroundColor,
+    borderRadius: 8,
+    flexDirection: "column",
+    rowGap: 10,
+  },
+  modalSubContainer: {
+    backgroundColor: "#aabb",
+    padding: 16,
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  label: { marginBottom: 6, fontSize: 14, color: "#333" },
 });
