@@ -1,12 +1,10 @@
-import { styles } from "@/components/ui/styleSheet";
-import { FlatList, View } from "react-native";
-import { FlatListComponent } from "./FlatListComponent";
-import { FlatListComponentProps } from "@/constants/Interfaces";
-import { getTaskList } from "../data/getTaskList";
-import { useEffect, useState } from "react";
-import { postTaskList } from "../data/postTaskList";
 import { storage } from "@/components/storage/mmkv";
+import { styles } from "@/components/styles/styleSheet";
+import { FlatListComponentProps } from "@/constants/Interfaces";
+import { useEffect, useState } from "react";
+import { FlatList, View } from "react-native";
 import { useMMKVString } from "react-native-mmkv";
+import { FlatListComponent } from "./FlatListComponent";
 
 export const Main: React.FC = () => {
   const [tasks] = useMMKVString("tasks", storage);

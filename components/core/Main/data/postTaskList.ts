@@ -4,7 +4,7 @@ import { getTaskList } from "./getTaskList";
 
 export const postTaskList = async (
   task: FlatListComponentProps,
-  setTask: (value: string) => void
+  setTask?: (value: string) => void
 ) => {
   const tasks = await getTaskList();
   // const finalTasks = [...tasks, task];
@@ -20,5 +20,5 @@ export const postTaskList = async (
     // Append new task
     updatedTasks = [...tasks, task];
   }
-  setTask(JSON.stringify(updatedTasks));
+  setTask?.(JSON.stringify(updatedTasks));
 };

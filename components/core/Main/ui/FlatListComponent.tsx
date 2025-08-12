@@ -1,9 +1,8 @@
 import { storage } from "@/components/storage/mmkv";
-import { styles } from "@/components/ui/styleSheet";
+import { styles } from "@/components/styles/styleSheet";
 import { FlatListComponentProps } from "@/constants/Interfaces";
-import { getRelativeTime } from "@/constants/TimeStamp";
-import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useMMKVString } from "react-native-mmkv";
 import { Checkbox } from "react-native-paper";
 import { postTaskList } from "../data/postTaskList";

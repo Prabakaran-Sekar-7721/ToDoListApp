@@ -1,18 +1,12 @@
-import {
-  View,
-  Text,
-  useWindowDimensions,
-  TouchableOpacity,
-} from "react-native";
-import { styles } from "../../ui/styleSheet";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { useEffect, useState } from "react";
-import Modal from "react-native-modal";
-import { postTaskList } from "../Main/data/postTaskList";
-import { formatTimestamp, getTimestamp } from "@/constants/TimeStamp";
-import { useMMKVString } from "react-native-mmkv";
 import { storage } from "@/components/storage/mmkv";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { useMMKVString } from "react-native-mmkv";
+import Modal from "react-native-modal";
 import { Button, TextInput } from "react-native-paper";
+import { styles } from "../../styles/styleSheet";
+import { EditModal } from "../Common/EditModal";
 
 export const Header: React.FC<any> = () => {
   const [isAddClicked, setIsAddClicked] = useState<boolean>(false);
@@ -37,55 +31,7 @@ export const Header: React.FC<any> = () => {
           />
         </TouchableOpacity>
       </View>
-      <Modal
-        isVisible={isAddClicked}
-        onSwipeComplete={() => setIsAddClicked(!isAddClicked)}
-        onBackdropPress={() => setIsAddClicked(!isAddClicked)}
-        useNativeDriverForBackdrop={true}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalSubContainer}>
-            <TextInput
-              label="Task"
-              value={title}
-              onChangeText={(text) => setTitle(text)}
-              mode="outlined"
-              textAlignVertical="top"
-              style={{ height: 50, width: "100%" }}
-            />
-          </View>
-          <View style={styles.modalSubContainer}>
-            <Text>{'Add a new task'}</Text>
-          </View>
-          <View style={styles.modalSubContainer}>
-            <TextInput
-              label="Description"
-              value={description}
-              onChangeText={(text) => setDescription(text)}
-              mode="outlined"
-              multiline={true}
-              textAlignVertical="top"
-              style={{ height: 100, width: "100%" }}
-            />
-          </View>
-          <View style={styles.modalSubContainer}>
-            <Button
-              icon="close"
-              mode="contained"
-              onPress={() => console.log("Pressed")}
-            >
-              {'Close'}
-            </Button>
-            <Button
-              icon="content-save"
-              mode="contained"
-              onPress={() => console.log("Pressed")}
-            >
-              {'Save'}
-            </Button>
-          </View>
-        </View>
-      </Modal>
+      <EditModal visible={isAddClicked} setVisible={setIsAddClicked} />
     </>
   );
 };
