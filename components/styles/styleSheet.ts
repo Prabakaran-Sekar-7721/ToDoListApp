@@ -108,7 +108,13 @@ export const styles = StyleSheet.create({
     rowGap: 10,
   },
   modalSubContainer: {
-    backgroundColor: "#aabb",
+    padding: 16,
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  ModalButtonContainer: {
     padding: 16,
     flexDirection: "row",
     width: "100%",
