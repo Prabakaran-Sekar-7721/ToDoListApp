@@ -1,6 +1,6 @@
 import { storage } from "@/components/storage/mmkv";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useMMKVString } from "react-native-mmkv";
 import Modal from "react-native-modal";
@@ -14,6 +14,7 @@ export const Header: React.FC<any> = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
+  useEffect(() => {},[isAddClicked])
   return (
     <>
       <View style={styles.header}>

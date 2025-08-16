@@ -99,3 +99,18 @@ export const isThisWeek = (timestamp: string): boolean => {
 
   return date >= weekAgo && date <= now;
 };
+
+export const formatDay = (date: Date)=> {
+  const day = date.getDate();
+  const monthShort = date.toLocaleString('en-US', { month: 'short' });
+  const year = date.getFullYear();
+  return `${day} ${monthShort} ${year}`;
+}
+
+export const formatTime = (date: Date) => {
+  return date.toLocaleString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  }).replace(' ', ''); // Removes space before AM/PM
+}

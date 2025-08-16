@@ -6,6 +6,7 @@ export const postTaskList = async (
   task: FlatListComponentProps,
   setTask?: (value: string) => void
 ) => {
+  try{
   const tasks = await getTaskList();
   // const finalTasks = [...tasks, task];
   // Check if this task ID already exists
@@ -21,4 +22,7 @@ export const postTaskList = async (
     updatedTasks = [...tasks, task];
   }
   setTask?.(JSON.stringify(updatedTasks));
+} catch (error) {
+  console.error("Error posting task:", error);
+}
 };
