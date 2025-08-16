@@ -25,4 +25,5 @@ export const colors = {
   cardBackground: "#ffffff",
   cardShadow: "rgba(0, 0, 0, 0.1)",
   dividerColor: "#e8e8e8",
+  dateTimeBackground: "#e6e6e7",
 };

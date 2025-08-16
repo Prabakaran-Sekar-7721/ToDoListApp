@@ -1,20 +1,109 @@
 // DateTimePickerExample.tsx
-import React, { useState } from "react";
-import { View, Button, Platform, Text } from "react-native";
-import RNDateTimePicker, { DateTimePickerEvent } from "@react-native-community/datetimepicker";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Button,
+  Platform,
+  Text,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
+import RNDateTimePicker, {
+  DateTimePickerAndroid,
+  DateTimePickerEvent,
+} from "@react-native-community/datetimepicker";
 import { DateTimePickerProps } from "@/constants/Interfaces";
+import { formatDay, formatTime } from "@/constants/TimeStamp";
+import { colors } from "@/components/styles/colors";
+import { styles } from "@/components/styles/styleSheet";
+import Modal from "react-native-modal";
 
-export const DateTimePickerComponent: React.FC<DateTimePickerProps> = ({ date, setDate }) => {
+export const DateTimePickerComponent: React.FC<DateTimePickerProps> = ({
+  date,
+  setDate,
+  isActive,
+}) => {
   // State with proper type annotation
-  const [mode, setMode] = useState<"datetime"|"date"|"time">("datetime");
+  const [mode, setMode] = useState<"datetime" | "date" | "time">("datetime");
+  const [day, setDay] = useState<Date>(isActive?new Date():date);
+  const [time, setTime] = useState<Date>(isActive?new Date():date);
 
   // Handler with TypeScript types
-  const onChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
-    const currentDate = selectedDate || date;
-    setDate(currentDate);
+  const onChange = (
+    event: DateTimePickerEvent,
+    selectedDate?: Date,
+  ) => {
+      const currentDate = selectedDate || date;
+      setDate(currentDate);
   };
 
-  return (
-        <RNDateTimePicker value={date} mode={mode} onChange={onChange} />
+  useEffect(()=>{
+    const combinedDate = new Date(day);
+    combinedDate.setHours(time.getHours());
+    combinedDate.setMinutes(time.getMinutes());
+    console.log("Combined Date:", combinedDate);
+    setDate(combinedDate);
+  },[day,time])
+
+  const showDatePicker = () => {
+    DateTimePickerAndroid.open({
+      value: date,
+      mode: "date",
+      minimumDate: new Date(),
+      onChange: (event, selectedDate) => {
+        if (event.type === "set" && selectedDate) {
+          setDay(selectedDate);
+        }
+      },
+    });
+  };
+
+  const showTimePicker = () => {
+    DateTimePickerAndroid.open({
+      value: date,
+      mode: "time",
+      minimumDate: new Date(),
+      onChange: (event, selectedDate) => {
+        if (event.type === "set" && selectedDate) {
+          setTime(selectedDate);
+        }
+      },
+    });
+  };
+
+  return Platform.OS === "ios" ? (
+    <RNDateTimePicker
+      value={date}
+      mode={mode}
+      onChange={onChange}
+      disabled={!isActive}
+      minimumDate={new Date()}
+    />
+  ) : (
+    <View style={styles.dateTimePickerAndroidContainer}>
+      <TouchableOpacity
+        style={isActive ? styles.dateTimeComponent : styles.dateTimeInactiveComponent}
+        onPress={showDatePicker}
+        disabled={!isActive}
+      >
+        <Text
+          style={{ color: colors.textPrimary, fontSize: 16, fontWeight: 500 }}
+        >
+          {formatDay(day)}
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+         style={isActive ? styles.dateTimeComponent : styles.dateTimeInactiveComponent}
+        onPress={showTimePicker}
+        disabled={!isActive}
+      >
+        <Text
+          style={{ color: colors.textPrimary, fontSize: 16, fontWeight: 500 }}
+        >
+          {formatTime(time)}
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };

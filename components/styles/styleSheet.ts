@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
   header: {
     backgroundColor: colors.headerColor,
     alignItems: "center",
-    // paddingVertical: 16,
     paddingHorizontal: 20,
     flexDirection: "row",
     flex: 1,
@@ -69,6 +68,7 @@ export const styles = StyleSheet.create({
     flex: 0.9,
     alignItems: "flex-start",
     justifyContent: "center",
+    rowGap:5
   },
 
   checkboxContainer: {
@@ -122,4 +122,16 @@ export const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   label: { marginBottom: 6, fontSize: 14, color: "#333" },
+  activeTextBorder:{borderColor:colors.textPrimary},
+  inActiveTextBorder:{borderColor:colors.textSecondary},
+  dateTimeComponent: {
+    backgroundColor: colors.dateTimeBackground,
+    padding: 10,
+    borderRadius: 10,
+  },
+    dateTimeInactiveComponent: {
+    padding: 10,
+    borderRadius: 10,
+  },
+  dateTimePickerAndroidContainer:{ flexDirection: "row", columnGap: 5, marginLeft: 10 }
 });

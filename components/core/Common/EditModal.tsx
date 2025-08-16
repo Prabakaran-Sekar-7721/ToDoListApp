@@ -1,21 +1,25 @@
-import { styles } from "@/components/styles/styleSheet";
-import { View } from "react-native";
-import { TextInput, Button, Snackbar } from "react-native-paper";
-import { DateTimePickerComponent } from "./DatePicker";
-import { EditModalProps, FlatListComponentProps } from "@/constants/Interfaces";
-import Modal from "react-native-modal";
-import { SetStateAction, useEffect, useState } from "react";
-import { postTaskList } from "../Main/data/postTaskList";
-import { useMMKVString } from "react-native-mmkv";
 import { storage } from "@/components/storage/mmkv";
+import { styles } from "@/components/styles/styleSheet";
+import { EditModalProps, FlatListComponentProps } from "@/constants/Interfaces";
+import { useEffect, useState } from "react";
+import { View, Text } from "react-native";
+import { useMMKVString } from "react-native-mmkv";
+import Modal from "react-native-modal";
+import { Button, Snackbar, TextInput } from "react-native-paper";
+import { postTaskList } from "../Main/data/postTaskList";
+import { DateTimePickerComponent } from "./DatePicker";
+import { colors } from "@/components/styles/colors";
+import { deleteTaskList } from "../Main/data/deleteTaskList";
 
 export const EditModal: React.FC<EditModalProps> = ({
   visible,
   setVisible,
   data,
+  mode = "add",
 }) => {
   const [tasks, setTasks] = useMMKVString("tasks", storage);
   const [title, setTitle] = useState<string>(data?.title || "");
+  const [isEditable, setIsEditable] = useState<boolean>(mode === "add");
   const [description, setDescription] = useState<string>(
     data?.description || ""
   );
@@ -23,16 +27,24 @@ export const EditModal: React.FC<EditModalProps> = ({
     data?.dateTimeStamp ? new Date(data.dateTimeStamp) : new Date()
   );
   const [currentData, setCurrentData] = useState<FlatListComponentProps>(
-    data ?? ({} as FlatListComponentProps)
+    data || ({} as FlatListComponentProps)
   );
   const [isTaskEmpty, setIsTaskEmpty] = useState<boolean>(false);
+
+  useEffect(()=>{
+    if(visible){
+      setTitle(data?.title || "");
+      setDescription(data?.description || "");
+      setDate(data?.dateTimeStamp ? new Date(data.dateTimeStamp) : new Date());
+    }
+  },[visible])
 
   useEffect(() => {
     setCurrentData({
       id: data?.id || Date.now(),
       title,
       dateTimeStamp: date.toISOString(),
-      status: data?.status || true,
+      status: data?.status || false,
       description,
     });
   }, [title, description, date]);
@@ -45,9 +57,11 @@ export const EditModal: React.FC<EditModalProps> = ({
             label="Task"
             value={title}
             onChangeText={(text) => setTitle(text)}
+            editable={isEditable}
             mode="outlined"
             textAlignVertical="top"
             style={{ height: 50, width: "100%" }}
+            activeOutlineColor={colors.accentColor}
             outlineColor={isTaskEmpty ? "red" : undefined}
           />
         </View>
@@ -55,15 +69,27 @@ export const EditModal: React.FC<EditModalProps> = ({
           <TextInput
             label="Description"
             value={description}
+            editable={isEditable}
             onChangeText={(text) => setDescription(text)}
             mode="outlined"
             multiline={true}
             textAlignVertical="top"
             style={{ height: 100, width: "100%" }}
+            activeOutlineColor={colors.accentColor}
+            outlineColor={isTaskEmpty ? "red" : undefined}
           />
         </View>
         <View style={styles.modalSubContainer}>
-          <DateTimePickerComponent date={date} setDate={setDate} />
+          <View>
+            <Text style={{ marginLeft: 10, marginBottom: 5 }}>
+              {"Date and Time"}
+            </Text>
+            <DateTimePickerComponent
+              date={date}
+              setDate={setDate}
+              isActive={isEditable}
+            />
+          </View>
         </View>
         <View style={styles.ModalButtonContainer}>
           <Button
@@ -73,23 +99,50 @@ export const EditModal: React.FC<EditModalProps> = ({
           >
             {"Close"}
           </Button>
-          <Button
-            icon="content-save"
-            mode="contained"
-            onPress={() => {
-              console.log("Save Pressed");
-              if (title.trim() === "") {
-                setIsTaskEmpty(true);
-                return;
-              } else {
+          {mode === "edit" && (
+            <Button
+              icon="delete"
+              mode="contained"
+              onPress={() => {
+                console.log("Delete Pressed");
                 setIsTaskEmpty(false);
-                postTaskList(currentData,setTasks);
+                deleteTaskList(currentData, setTasks);
                 setVisible(!visible);
-              }
-            }}
-          >
-            {"Save"}
-          </Button>
+              }}
+            >
+              {"Delete"}
+            </Button>
+          )}
+          {mode === "edit" && !isEditable && (
+            <Button
+              icon="note-edit"
+              mode="contained"
+              onPress={() => {
+                setIsEditable(true);
+              }}
+            >
+              {"Edit"}
+            </Button>
+          )}
+          {(mode === "add" || isEditable) && (
+            <Button
+              icon="content-save"
+              mode="contained"
+              onPress={() => {
+                console.log("Save Pressed");
+                if (title.trim() === "") {
+                  setIsTaskEmpty(true);
+                  return;
+                } else {
+                  setIsTaskEmpty(false);
+                  postTaskList(currentData, setTasks);
+                  setVisible(!visible);
+                }
+              }}
+            >
+              {"Save"}
+            </Button>
+          )}
         </View>
       </View>
       <Snackbar

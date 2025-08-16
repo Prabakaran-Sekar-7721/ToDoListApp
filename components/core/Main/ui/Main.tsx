@@ -24,7 +24,6 @@ export const Main: React.FC = () => {
             )
           : []
       );
-      // storage.clearAll();
     };
     fetchData();
   }, [tasks]);
