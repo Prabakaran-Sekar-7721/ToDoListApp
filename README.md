@@ -1,6 +1,24 @@
+
 # ToDoListApp
 
 A cross-platform To-Do List application built with [Expo](https://expo.dev) and React Native.
+
+## External Packages Used in Components
+
+The following external packages (excluding local modules) are used across component files:
+
+- react
+- react-native
+- react-native-safe-area-context
+- @expo/vector-icons
+- react-native-mmkv
+- react-native-modal
+- react-native-paper
+- react-native-gesture-handler
+- react-native-reanimated
+- @react-native-community/datetimepicker
+
+---
 
 ## Features
 

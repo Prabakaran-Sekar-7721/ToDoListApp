@@ -1,113 +1,94 @@
-// Example: COMPONENTS.md
-
-# Components Documentation
-
-## Collapsible
-
-**File:** `components/Collapsible.tsx`
-
-- **Description:**  
-  Renders a section that can expand/collapse to show or hide its children.
-- **Props:**
-  - `title` (string): Title of the collapsible section.
-  - `children` (ReactNode): Content to display inside the collapsible area.
+## Component Details
 
 ---
 
-## ExternalLink
+### Appcontent.tsx
+**Component:** `AppContent`
+**Location:** `Appcontent.tsx`
+**Description:** Root component that sets up safe area, status bar, and renders the Header and Main components.
 
-**File:** `components/ExternalLink.tsx`
-
-- **Description:**  
-  Renders a styled link that opens an external URL.
-- **Props:**
-  - `href` (string): The URL to open.
-  - `children` (ReactNode): Link text or elements.
-
----
-
-## HapticTab
-
-**File:** `components/HapticTab.tsx`
-
-- **Description:**  
-  Custom tab bar button that triggers haptic feedback on press.
-- **Props:**  
-  Inherits all tab bar button props from Expo Router.
+**Key Packages Used:**
+- react
+- react-native
+- react-native-safe-area-context
 
 ---
 
-## HelloWave
+### Header.tsx
+**Component:** `Header`
+**Location:** `Header.tsx`
+**Description:** Displays the app title and an add button. Handles opening the modal for adding tasks.
 
-**File:** `components/HelloWave.tsx`
-
-- **Description:**  
-  Animated waving hand icon for greeting screens.
-- **Props:**  
-  - `size` (number): Size of the icon.
-
----
-
-## ParallaxScrollView
-
-**File:** `components/ParallaxScrollView.tsx`
-
-- **Description:**  
-  ScrollView with a parallax header image and customizable background.
-- **Props:**
-  - `headerImage` (ReactNode): Image or icon for the header.
-  - `headerBackgroundColor` (object): Background color for header (light/dark).
-  - `children` (ReactNode): Scrollable content.
+**Key Packages Used:**
+- react
+- react-native
+- @expo/vector-icons
+- react-native-mmkv
+- react-native-modal
+- react-native-paper
 
 ---
 
-## ThemedText
+### EditModal.tsx
+**Component:** `EditModal`
+**Location:** `EditModal.tsx`
+**Description:** Modal for adding or editing a task. Includes title, description, date picker, and save/delete actions.
 
-**File:** `components/ThemedText.tsx`
-
-- **Description:**  
-  Text component that adapts to the current theme (light/dark).
-- **Props:**
-  - `type` (string): Style variant (`title`, `default`, etc.).
-  - `children` (ReactNode): Text content.
-
----
-
-## ThemedView
-
-**File:** `components/ThemedView.tsx`
-
-- **Description:**  
-  View container that adapts its background to the current theme.
-- **Props:**
-  - `style` (object): Custom styles.
-  - `children` (ReactNode): Content.
+**Key Packages Used:**
+- react
+- react-native
+- react-native-mmkv
+- react-native-modal
+- react-native-paper
 
 ---
 
-## IconSymbol
+### DatePicker.tsx
+**Component:** `DateTimePickerComponent`
+**Location:** `DatePicker.tsx`
+**Description:** Date and time picker for selecting task deadlines.
 
-**File:** `components/ui/IconSymbol.tsx`
-
-- **Description:**  
-  Renders a platform-specific icon using system symbols.
-- **Props:**
-  - `name` (string): Icon name.
-  - `size` (number): Icon size.
-  - `color` (string): Icon color.
-
----
-
-## TabBarBackground
-
-**File:** `components/ui/TabBarBackground.tsx`
-
-- **Description:**  
-  Custom background for the tab bar, supporting blur and theme adaptation.
-- **Props:**  
-  Inherits tab bar background props.
+**Key Packages Used:**
+- react
+- react-native
+- @react-native-community/datetimepicker
+- react-native-modal
 
 ---
 
-**Note:**  
-For more details, refer to the prop types and usage examples in each
+### FlatListComponent.tsx
+**Component:** `FlatListComponent`
+**Location:** `FlatListComponent.tsx`
+**Description:** Renders each task item in the list, with support for editing, marking complete, and swipe actions.
+
+**Key Packages Used:**
+- react
+- react-native
+- react-native-mmkv
+- react-native-paper
+- react-native-gesture-handler
+- react-native-reanimated
+
+---
+
+### Main.tsx
+**Component:** `Main`
+**Location:** `Main.tsx`
+**Description:** Displays the list of tasks using a FlatList and the FlatListComponent.
+
+**Key Packages Used:**
+- react
+- react-native
+- react-native-mmkv
+
+---
+
+### mmkv.tsx
+**Component:** `storage (MMKV instance)`
+**Location:** `mmkv.tsx`
+**Description:** Exports the MMKV storage instance for fast key-value storage.
+
+**Key Packages Used:**
+- react-native-mmkv
+
+---

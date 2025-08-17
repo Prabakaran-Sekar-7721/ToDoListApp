@@ -18,5 +18,6 @@ export interface EditModalProps {
 export interface DateTimePickerProps {
   date: Date;
   setDate: React.Dispatch<React.SetStateAction<Date>>;
-  isActive:boolean
+  isActive:boolean;
+  dismissKeyboard: () => void;
 }
