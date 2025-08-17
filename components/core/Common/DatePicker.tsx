@@ -22,6 +22,7 @@ export const DateTimePickerComponent: React.FC<DateTimePickerProps> = ({
   date,
   setDate,
   isActive,
+  dismissKeyboard
 }) => {
   // State with proper type annotation
   const [mode, setMode] = useState<"datetime" | "date" | "time">("datetime");
@@ -41,11 +42,11 @@ export const DateTimePickerComponent: React.FC<DateTimePickerProps> = ({
     const combinedDate = new Date(day);
     combinedDate.setHours(time.getHours());
     combinedDate.setMinutes(time.getMinutes());
-    console.log("Combined Date:", combinedDate);
     setDate(combinedDate);
   },[day,time])
 
   const showDatePicker = () => {
+    dismissKeyboard();
     DateTimePickerAndroid.open({
       value: date,
       mode: "date",
@@ -59,6 +60,7 @@ export const DateTimePickerComponent: React.FC<DateTimePickerProps> = ({
   };
 
   const showTimePicker = () => {
+    dismissKeyboard();
     DateTimePickerAndroid.open({
       value: date,
       mode: "time",

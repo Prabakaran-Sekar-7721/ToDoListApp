@@ -133,5 +133,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
-  dateTimePickerAndroidContainer:{ flexDirection: "row", columnGap: 5, marginLeft: 10 }
+  dateTimePickerAndroidContainer:{ flexDirection: "row", columnGap: 5, marginLeft: 10 },
+  inputNotesText:{ marginLeft: 5, marginTop: 5, fontSize: 10, color: colors.textSecondary}
 });

@@ -2,7 +2,7 @@ import { storage } from "@/components/storage/mmkv";
 import { styles } from "@/components/styles/styleSheet";
 import { EditModalProps, FlatListComponentProps } from "@/constants/Interfaces";
 import { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { useMMKVString } from "react-native-mmkv";
 import Modal from "react-native-modal";
 import { Button, Snackbar, TextInput } from "react-native-paper";
@@ -31,13 +31,13 @@ export const EditModal: React.FC<EditModalProps> = ({
   );
   const [isTaskEmpty, setIsTaskEmpty] = useState<boolean>(false);
 
-  useEffect(()=>{
-    if(visible){
+  useEffect(() => {
+    if (visible) {
       setTitle(data?.title || "");
       setDescription(data?.description || "");
       setDate(data?.dateTimeStamp ? new Date(data.dateTimeStamp) : new Date());
     }
-  },[visible])
+  }, [visible]);
 
   useEffect(() => {
     setCurrentData({
@@ -49,102 +49,115 @@ export const EditModal: React.FC<EditModalProps> = ({
     });
   }, [title, description, date]);
 
+  const dismissKeyboard = () => {
+    Keyboard.dismiss();
+  };
+
   return (
-    <Modal isVisible={visible} useNativeDriverForBackdrop={true}>
-      <View style={styles.modalContainer}>
-        <View style={styles.modalSubContainer}>
-          <TextInput
-            label="Task"
-            value={title}
-            onChangeText={(text) => setTitle(text)}
-            editable={isEditable}
-            mode="outlined"
-            textAlignVertical="top"
-            style={{ height: 50, width: "100%" }}
-            activeOutlineColor={colors.accentColor}
-            outlineColor={isTaskEmpty ? "red" : undefined}
-          />
-        </View>
-        <View style={styles.modalSubContainer}>
-          <TextInput
-            label="Description"
-            value={description}
-            editable={isEditable}
-            onChangeText={(text) => setDescription(text)}
-            mode="outlined"
-            multiline={true}
-            textAlignVertical="top"
-            style={{ height: 100, width: "100%" }}
-            activeOutlineColor={colors.accentColor}
-            outlineColor={isTaskEmpty ? "red" : undefined}
-          />
-        </View>
-        <View style={styles.modalSubContainer}>
-          <View>
-            <Text style={{ marginLeft: 10, marginBottom: 5 }}>
-              {"Date and Time"}
+    <Modal
+      isVisible={visible}
+      useNativeDriverForBackdrop={true}
+      onBackdropPress={() => dismissKeyboard()}
+      onTouchCancel={dismissKeyboard}
+    >
+      <TouchableWithoutFeedback onPress={dismissKeyboard}>
+        <View style={styles.modalContainer}>
+          <View style={[styles.modalSubContainer,{flexDirection: "column", alignItems: "flex-start"}]}>
+            <TextInput
+              label="Task"
+              value={title}
+              onChangeText={(text) => setTitle(text)}
+              editable={isEditable}
+              mode="outlined"
+              textAlignVertical="top"
+              style={{ height: 50, width: "100%" }}
+              activeOutlineColor={colors.accentColor}
+              outlineColor={isTaskEmpty ? "red" : undefined}
+              maxLength={30}
+            />
+            <Text style={styles.inputNotesText}>
+              {"Note: Task name must be less than 30 characters"}
             </Text>
-            <DateTimePickerComponent
-              date={date}
-              setDate={setDate}
-              isActive={isEditable}
+          </View>
+          <View style={styles.modalSubContainer}>
+            <TextInput
+              label="Description"
+              value={description}
+              editable={isEditable}
+              onChangeText={(text) => setDescription(text)}
+              mode="outlined"
+              multiline={true}
+              textAlignVertical="top"
+              style={{ height: 100, width: "100%" }}
+              activeOutlineColor={colors.accentColor}
             />
           </View>
-        </View>
-        <View style={styles.ModalButtonContainer}>
-          <Button
-            icon="close"
-            mode="contained"
-            onPress={() => setVisible(!visible)}
-          >
-            {"Close"}
-          </Button>
-          {mode === "edit" && (
+          <View style={styles.modalSubContainer}>
+            <View>
+              <Text style={{ marginLeft: 10, marginBottom: 5 }}>
+                {"Date and Time"}
+              </Text>
+              <DateTimePickerComponent
+                date={date}
+                setDate={setDate}
+                isActive={isEditable}
+                dismissKeyboard={dismissKeyboard}
+              />
+            </View>
+          </View>
+          <View style={styles.ModalButtonContainer}>
             <Button
-              icon="delete"
+              icon="close"
               mode="contained"
-              onPress={() => {
-                console.log("Delete Pressed");
-                setIsTaskEmpty(false);
-                deleteTaskList(currentData, setTasks);
-                setVisible(!visible);
-              }}
+              onPress={() => setVisible(!visible)}
             >
-              {"Delete"}
+              {"Close"}
             </Button>
-          )}
-          {mode === "edit" && !isEditable && (
-            <Button
-              icon="note-edit"
-              mode="contained"
-              onPress={() => {
-                setIsEditable(true);
-              }}
-            >
-              {"Edit"}
-            </Button>
-          )}
-          {(mode === "add" || isEditable) && (
-            <Button
-              icon="content-save"
-              mode="contained"
-              onPress={() => {
-                console.log("Save Pressed");
-                if (title.trim() === "") {
-                  setIsTaskEmpty(true);
-                  return;
-                } else {
+            {mode === "edit" && (
+              <Button
+                icon="delete"
+                mode="contained"
+                onPress={() => {
                   setIsTaskEmpty(false);
-                  postTaskList(currentData, setTasks);
+                  deleteTaskList(currentData, setTasks);
                   setVisible(!visible);
-                }
-              }}
-            >
-              {"Save"}
-            </Button>
-          )}
+                }}
+              >
+                {"Delete"}
+              </Button>
+            )}
+            {mode === "edit" && !isEditable && (
+              <Button
+                icon="note-edit"
+                mode="contained"
+                onPress={() => {
+                  setIsEditable(true);
+                }}
+              >
+                {"Edit"}
+              </Button>
+            )}
+            {(mode === "add" || isEditable) && (
+              <Button
+                icon="content-save"
+                mode="contained"
+                onPress={() => {
+                  if (title.trim() === "") {
+                    setIsTaskEmpty(true);
+                    return;
+                  } else {
+                    setIsTaskEmpty(false);
+                    postTaskList(currentData, setTasks);
+                    setVisible(!visible);
+                  }
+                }}
+              >
+                {"Save"}
+              </Button>
+            )}
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
       <Snackbar
         visible={isTaskEmpty}
         onDismiss={() => setIsTaskEmpty(false)}

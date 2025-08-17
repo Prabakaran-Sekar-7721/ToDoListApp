@@ -6,18 +6,7 @@ export const getTimestamp = (): string => {
 // Format timestamp to readable date string
 export const formatTimestamp = (timestamp: string): string => {
   const date = new Date(timestamp);
-
-  console.log(
-    "timestamp:",
-    timestamp,
-    " Date:",
-    date,
-    " date.getTime()",
-    date.getTime(),
-    " isNaN(date.getTime())",
-    isNaN(date.getTime())
-  );
-
+  
   // Check if date is valid
   if (isNaN(date.getTime())) {
     return "Invalid date";
